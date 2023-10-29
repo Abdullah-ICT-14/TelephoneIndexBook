@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TelephoneIndexBook.Models.personInfo>
+
+@{
+    ViewBag.Title = "DisplayPersonInfo";
+}
+<br />
+<br />
+
+<h2 style="text-align:center">Person Information</h2>
+<br />
+<p>
+    @Html.ActionLink("Insert New Information", "CreatePersonInfo","Phone",new {@class = "btn btn-primary" })
+</p>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.designation)
+        </th>
+        <th>
+                @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.department)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.designation)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdatePersonInfo","Phone", new { id = item.id }, new { @class = "btn btn-success" }) &nbsp;&nbsp;
+            @Html.ActionLink("Details", "DetailsPerson","Phone", new { id = item.id }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;
+            @Html.ActionLink("Delete", "DeletePersonInfo", "Phone", new { id = item.id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+    
+</table>

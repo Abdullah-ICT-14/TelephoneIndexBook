@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1 style="text-align:center; padding:50px"> Welcome to Telephone Index System</h1>
+<html>
+<head>
+    <title>Search Form</title>
+</head>
+<body>
+    <form action="/Phone/Search" method="get">
+        <label for="searchTerm">Search:</label>
+        <input type="text" id="searchString" name="searchString">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
