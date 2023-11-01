@@ -1,10 +1,22 @@
 ﻿@model IEnumerable<TelephoneIndexBook.Models.personInfo>
 
 @{
+    /**/
+
     ViewBag.Title = "Search";
 }
 
-<h2>Search Result</h2>
+<center> <h2 style="color: MediumSeaGreen;">Search Result</h2> </center>
+
+<br />
+
+<form action="/Phone/ReportNew" method="get" target="_blank">
+    <input type="hidden" name="searchString" value="@ViewBag.SearchString">
+    <input type="submit" value="Generate Report" style="background-color: DeepSkyBlue; color: black;">
+</form>
+
+</br>
+
 <table class="table">
     <tr>
         <th>

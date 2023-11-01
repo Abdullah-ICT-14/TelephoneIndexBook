@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TelephoneIndexBook.Models;
+using System.IO;
+using Microsoft.Reporting.WebForms;
 
 namespace TelephoneIndexBook.Controllers
 {
     public class PhoneController : Controller
     {
         Telephone_IndexEntities1 db = new Telephone_IndexEntities1();
+        
         // GET: Phone
         public ActionResult Index()
         {
@@ -85,7 +88,7 @@ namespace TelephoneIndexBook.Controllers
         {
             var persons = from p in db.personInfoes
                           select p;
-                          ViewBag.a = searchString;
+            ViewBag.SearchString = searchString;
             ViewBag.e = persons;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -96,12 +99,87 @@ namespace TelephoneIndexBook.Controllers
                     p.phone.Contains(searchString) ||
                     p.department.Contains(searchString) ||
                     p.designation.Contains(searchString));
-            }
-            else
-            {
-                ViewBag.f = "Not found!";
+                
+
             }
             return View(persons.ToList());
         }
+
+
+        [HttpGet]
+        public ActionResult Report(string searchString)
+        {
+            // Use searchString to filter data from your database
+            var data = db.personInfoes.Where(p =>
+                    p.fname.Contains(searchString) ||
+                    p.lname.Contains(searchString) ||
+                    p.email.Contains(searchString) ||
+                    p.phone.Contains(searchString) ||
+                    p.department.Contains(searchString) ||
+                    p.designation.Contains(searchString)).ToList();
+                    
+            // Create a LocalReport object
+            var localReport = new LocalReport();
+
+
+
+            // Load the RDLC report
+            //localReport.ReportPath = Server.MapPath("~/Reports/Report.rdlc");
+
+            localReport.ReportPath = Server.MapPath("~/Reports/Report.rdlc");
+
+            // Add data source to the report
+            localReport.DataSources.Add(new ReportDataSource("MyDataSet", data));
+
+            // Render the report
+            string mimeType, encoding, fileNameExtension;
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                "PDF", null, out mimeType, out encoding,
+                out fileNameExtension, out streams, out warnings);
+
+            // Return the PDF as a file result
+            return File(renderedBytes, mimeType);
+        }
+        
+
+            public ActionResult ReportNew(string searchString)
+            {
+            // Get data from your database
+            var data = db.personInfoes.Where(p =>
+                    p.fname.Contains(searchString) ||
+                    p.lname.Contains(searchString) ||
+                    p.email.Contains(searchString) ||
+                    p.phone.Contains(searchString) ||
+                    p.department.Contains(searchString) ||
+                    p.designation.Contains(searchString)).ToList();
+
+            // Create a LocalReport object
+            var localReport = new LocalReport();
+
+                // Load the RDLC report
+                localReport.ReportPath = Server.MapPath("~/Reports/Report.rdlc");
+
+                // Add data source to the report
+                localReport.DataSources.Add(new ReportDataSource("MyDataSet", data));
+
+                // Render the report
+                string mimeType, encoding, fileNameExtension;
+                string[] streams;
+                Warning[] warnings;
+                byte[] renderedBytes;
+
+                renderedBytes = localReport.Render(
+                    "PDF", null, out mimeType, out encoding,
+                    out fileNameExtension, out streams, out warnings);
+
+                // Return the PDF as a file result
+                return File(renderedBytes, mimeType);
+            }
+        
+
     }
 }
