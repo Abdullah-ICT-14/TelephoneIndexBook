@@ -187,6 +187,25 @@ namespace TelephoneIndexBook.Controllers
             return View();
         }
 
+        public ActionResult Login(SignUpTable model)
+        {
+                var user = db.SignUpTables.FirstOrDefault(u => u.UserId == model.UserId && u.Password == model.Password);
+                if (user != null)
+                {
+                    // User found in the database
+                    // You can set the user as logged in here, for example by setting a session variable
+                    Session["UserId"] = user.UserId;
+                    return RedirectToAction("Index", "Home"); // Redirect to the home page after successful login
+                }
+                else
+                {
+                    // User not found in the database
+                    ModelState.AddModelError("", "Invalid User ID or password.");
+                }
+
+            return View(model); // If model state is not valid or login failed, return the user back to the login form
+        }
+
         [HttpGet]
         public ActionResult Signup()
         {

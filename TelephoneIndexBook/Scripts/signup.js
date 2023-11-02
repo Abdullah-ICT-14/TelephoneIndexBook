@@ -1,49 +1,79 @@
-﻿document.getElementById('signupForm').addEventListener('submit', function (event) {
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('cpassword').value;
+﻿// Show/hide password onClick of button using Javascript only
+
+// https://stackoverflow.com/questions/31224651/show-hide-password-onclick-of-button-using-javascript-only
+
+//function show() {
+//    var p = document.getElementById('pwd');
+//    p.setAttribute('type', 'text');
+//}
+
+//function hide() {
+//    var p = document.getElementById('pwd');
+//    p.setAttribute('type', 'password');
+//}
+
+//var pwShown = 0;
+
+//document.getElementById("eye").addEventListener("click", function () {
+//    if (pwShown == 0) {
+//        pwShown = 1;
+//        show();
+//    } else {
+//        pwShown = 0;
+//        hide();
+//    }
+//}, false);
+
+
+
+//function show() {
+//    var p = document.getElementById('cpwd');
+//    p.setAttribute('type', 'text');
+//}
+
+//function hide() {
+//    var p = document.getElementById('cpwd');
+//    p.setAttribute('type', 'password');
+//}
+
+//var cpwShown = 0;
+
+//document.getElementById("eye1").addEventListener("click", function () {
+//    if (cpwShown == 0) {
+//        cpwShown = 1;
+//        show();
+//    } else {
+//        cpwShown = 0;
+//        hide();
+//    }
+//}, false);
+
+
+document.getElementById('eye1').addEventListener('click', function () {
+    var passwordField = document.getElementById('cpwd');
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+});
+//for Eye Sign Toggle Password
+document.getElementById('eye').addEventListener('click', function () {
+    var passwordField = document.getElementById('pwd');
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+});
+
+document.getElementById('signupForm').addEventListener('submit', function (event) {
+    var password = document.getElementById('pwd').value;
+    var confirmPassword = document.getElementById('cpwd').value;
 
     if (password !== confirmPassword) {
         alert('Passwords do not match.');
         event.preventDefault();  // Prevent form submission
-    }
-});
-document.getElementById('signupForm').addEventListener('submit', function (event) {
-    var recaptchaResponse = grecaptcha.getResponse();
-
-    if (recaptchaResponse.length == 0) {
-        // The reCAPTCHA was not completed correctly
-        alert('Please complete the reCAPTCHA.');
-        event.preventDefault();  // Prevent form submission
-    }
-});
-
-document.getElementById('toggle-password').addEventListener('click', function () {
-    var passwordField = document.getElementById('password');
-    var passwordFieldType = passwordField.getAttribute('type');
-
-    if (passwordFieldType === 'password') {
-        passwordField.setAttribute('type', 'text');
-        this.classList.remove('fa-eye');
-        this.classList.add('fa-eye-slash');
-    } else {
-        passwordField.setAttribute('type', 'password');
-        this.classList.remove('fa-eye-slash');
-        this.classList.add('fa-eye');
-    }
-});
-
-document.getElementById('ctoggle-password').addEventListener('click', function () {
-    var passwordField = document.getElementById('cpassword');
-    var passwordFieldType = passwordField.getAttribute('type');
-
-    if (passwordFieldType === 'password') {
-        passwordField.setAttribute('type', 'text');
-        this.classList.remove('fa-eye');
-        this.classList.add('fa-eye-slash');
-    } else {
-        passwordField.setAttribute('type', 'password');
-        this.classList.remove('fa-eye-slash');
-        this.classList.add('fa-eye');
     }
 });
 
@@ -67,3 +97,4 @@ document.getElementById('signupForm').addEventListener('submit', function (event
         return;
     }
 });
+
