@@ -1,0 +1,120 @@
+﻿﻿@using TelephoneIndexBook.Models
+@model SignUpTable
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="~/Content/Login.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+</head>
+<body>
+    <br /><br /><br />
+    <div class="overlay">
+        <!-- LOGN IN FORM by Omar Dsoky -->
+        <form id="signupForm" method="post">
+            <!--   con = Container  for items in the form-->
+            <div class="con">
+                <!--     Start  header Content  -->
+                <header class="head-form">
+                    <center><h1>Telephone Index System</h1></center>
+                    <h2>Sign Up</h2>
+                    <!--     A welcome message or an explanation of the login form -->
+                    <p></p>
+                </header>
+                <!--     End  header Content  -->
+                <br>
+                <div class="field-set">
+                    <label>User Id</label>&emsp;&emsp;
+                    <!--   user id -->
+                    <span class="input-item">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <!--   user id Input-->
+
+                    <input class="form-input" id="txt-input" type="text" placeholder="user id" name="UserId" required>
+                    @Html.ValidationMessageFor(model => model.UserId)
+                    <br><br />
+
+                    <label>Name</label>&emsp;&emsp;&nbsp;&nbsp;
+                    <!--   user name -->
+                    <span class="input-item">
+                        <i class="fa fa-user-circle"></i>
+                    </span>
+                    <!--   user name Input-->
+
+                    <input class="form-input" id="txt-input" type="text" name="Name" placeholder="name" required>
+
+                    <br><br />
+
+                    <label>Email</label>&emsp;&emsp;&nbsp;&nbsp;
+                    <!--   user emaill -->
+                    <span class="input-item">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    <!--   user email Input-->
+
+                    <input class="form-input" id="email" type="email" name="Email" placeholder="email" required>
+
+                    <br><br />
+
+                    <label>Mobile</label>&emsp;&emsp;&nbsp;
+                    <!--   user mobile -->
+                    <span class="input-item">
+                        <i class="fa fa-mobile"></i>
+                    </span>
+                    <!--   user mobile Input-->
+
+                    <input class="form-input" id="mobile" type="tel" name="Mobile" placeholder="mobile" required>
+
+                    <br><br />
+
+                    <!--   Password -->
+                    <label>Password</label>&emsp;
+                    <span class="input-item">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <!--   Password Input-->
+                    <input class="form-input" type="password" placeholder="Password" id="pwd" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+                    <!--      Show/hide password  -->
+                    &nbsp; &nbsp; <span>
+                        <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
+                    </span>
+                    <br><br />
+
+
+                    <!--  Confirm  Password -->
+                    <label>C. Password</label>
+                    <span class="input-item">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <!--   Password Input-->
+                    <input class="form-input" type="password" placeholder="Confirm Password" id="cpwd" name="password" required>
+
+                    <!--      Show/hide password  -->
+                    <span>
+                        <i class="fa fa-eye" aria-hidden="true" type="button" id="eye1"></i>
+                    </span>
+                    <br><br />
+
+                    <br>&emsp; &emsp; &emsp;&emsp;
+                    <!--        buttons -->
+                    <!--      button LogIn -->
+                    <input type="submit" value="Submit" />
+                </div>
+
+                <!--   End Conrainer  -->
+            </div>
+
+            <!-- End Form -->
+        </form>
+    </div>
+    <script src="~/Scripts/Login.js"></script>
+</body>
+</html>
+

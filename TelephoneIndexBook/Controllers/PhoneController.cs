@@ -179,7 +179,39 @@ namespace TelephoneIndexBook.Controllers
                 // Return the PDF as a file result
                 return File(renderedBytes, mimeType);
             }
-        
 
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Signup()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Signup(SignUpTable user)
+        {
+            var existingUser = db.SignUpTables.FirstOrDefault(u => u.UserId == user.UserId);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("UserId", "User ID already exists. Please Enter Unique User Id");
+                ViewBag.Message = "User ID already exists";
+                return View(user);
+            }
+
+            if (ModelState.IsValid)
+            {
+                db.SignUpTables.Add(user);
+                db.SaveChanges();
+
+                return RedirectToAction("Login"); // Redirect to the login page after successful registration
+            }
+
+            return View(user); // If model state is not valid, return the user back to the registration form
+        }
     }
 }

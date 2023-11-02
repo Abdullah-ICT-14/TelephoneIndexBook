@@ -1,0 +1,86 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="~/Content/Login.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+</head>
+<body>
+    <br /><br /><br /><br /><br />
+    
+    <div class="overlay">
+        <!-- LOGN IN FORM by Omar Dsoky -->
+        <form>
+            <!--   con = Container  for items in the form-->
+            <div class="con">
+                <!--     Start  header Content  -->
+                <header class="head-form">
+                    <center><h1>Telephone Index System</h1></center>
+                    <h2>Login</h2>
+                    <!--     A welcome message or an explanation of the login form -->
+                    <p></p>
+                </header>
+                <!--     End  header Content  -->
+                <br>
+                <div class="field-set">
+                    <label>User Id</label>&emsp;&emsp;
+                    <!--   user name -->
+                    <span class="input-item">
+                        <i class="fa fa-user-circle"></i>
+                    </span>
+                    <!--   user name Input-->
+
+                    <input class="form-input" id="txt-input" type="text" placeholder="UserId" required>
+
+                    <br><br />
+
+                    <!--   Password -->
+                    <label>Password</label>&emsp;
+                    <span class="input-item">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <!--   Password Input-->
+                    <input class="form-input" type="password" placeholder="Password" id="pwd" name="password" required>
+
+                    <!--      Show/hide password  -->
+                    <span>
+                        <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
+                    </span>
+
+
+                    <br>&emsp; &emsp; &emsp;&emsp;
+                    <!--        buttons -->
+                    <!--      button LogIn -->
+                    <input type="submit" value="Submit" />
+                </div>
+
+                <!--   other buttons -->
+                <div class="other">
+                    <!--      Forgot Password button-->
+                    <button class="btn submits frgt-pass">Forgot Password</button>
+                    <!--     Sign Up button -->
+                    <a href="/Phone/SignUp">
+                        Sign Up
+                    </a>
+                    <!-- <button class="btn submits sign-up">
+         Sign Up
+         <i class="fa fa-user-plus" aria-hidden="true"></i>
+     </button>-->
+                    <!--      End Other the Division -->
+                </div>
+
+                <!--   End Conrainer  -->
+            </div>
+
+            <!-- End Form -->
+        </form>
+    </div>
+    <script src="script.js"></script>
+    <script src="~/Scripts/Login.js"> </script>
+</body>
+</html>

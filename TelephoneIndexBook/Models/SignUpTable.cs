@@ -12,35 +12,27 @@ namespace TelephoneIndexBook.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class personInfo
+    public partial class SignUpTable
     {
-        public int id { get; set; }
-        [Display(Name = "Phone Number")]
+        [Key]
+        [Required]
+        public string UserId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
         [Required]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^0[0-9]{10}$", ErrorMessage = "Not a valid phone number")]
-        public string phone { get; set; }
+       
+        public string Mobile { get; set; }
 
-        [Required]
-        [Display(Name = "First Name")]
-        public string fname { get; set; }
 
-        [Required]
-        [Display(Name = "Last Name")]
-        public string lname { get; set; }
-
-        [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        public string email { get; set; }
-
-
-        [Required]
-        [Display(Name = "Departmet")]
-        public string department { get; set; }
+        public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Designation")]
-        public string designation { get; set; }
+        public string Password { get; set; }
     }
 }

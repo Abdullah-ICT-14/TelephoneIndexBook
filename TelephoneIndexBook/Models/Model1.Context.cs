@@ -26,5 +26,6 @@ namespace TelephoneIndexBook.Models
         }
     
         public virtual DbSet<personInfo> personInfoes { get; set; }
+        public virtual DbSet<SignUpTable> SignUpTables { get; set; }
     }
 }
